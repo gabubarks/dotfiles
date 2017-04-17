@@ -35,11 +35,13 @@ call plug#end()
 " files to be open at the same time.
 set hidden
 
-" Command completion
+" Enable mouse control, nice to have sometimes
+set mouse=a
+
+" Bash-like command completion
 " First tab completes as much as possible
 " Second tab shows a list of possible completions
-" Third and subsequent tab cycles through this list
-set wildmode=longest,list,full
+set wildmode=longest:list
 set wildmenu
 
 " A lot of history
@@ -110,8 +112,10 @@ set fillchars+=vert:\  " < Significant whitespae
 " Use powerline symbols for airline
 let g:airline_powerline_fonts = 1
 
-" Show open buffers at the top when only one tab is open
+" Show open buffers at the top when only one tab is open,
+" and show buffer number
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#buffer_nr_show = 1
 
 " Use folder icons in NERDTree
 let g:WebDevIconsUnicodeDecorateFolderNodes = 1
@@ -145,6 +149,10 @@ map <C-h> <C-w>h
 map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
+
+" Quickly switch between matching braces
+nnoremap <Tab> %
+vnoremap <Tab> %
 
 " Clear search register
 nmap <silent> <leader>/ :nohlsearch<CR>
