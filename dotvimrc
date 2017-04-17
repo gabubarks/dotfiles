@@ -144,6 +144,9 @@ nnoremap <C-y> 2<C-y>
 nnoremap j gj
 nnoremap k gk
 
+" Quickly get out of insert mode without reaching for escape
+inoremap jj <Esc>
+
 " Faster window navigation
 map <C-h> <C-w>h
 map <C-j> <C-w>j
