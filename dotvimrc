@@ -1,8 +1,9 @@
 " INTIALIZATION
 " Some defaults for multiplatform compatibility
-" i.e. there may be a system default vimrc...
+" i.e. gvim for windows still sets compatible even when a .vimrc exists
 set nocompatible
 set encoding=utf-8
+set shortmess+=I        " Hide intro message
 
 " PLUGINS
 " -----------------------------------
@@ -92,6 +93,11 @@ endif
 " Color theme
 colorscheme molokai
 
+" Use actual truecolor colors if available
+if has("termguicolors")
+    set termguicolors
+endif
+
 " Show command as it's being entered
 " Also shows size of selection in visual mode
 set showcmd
@@ -117,10 +123,10 @@ let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#buffer_nr_show = 1
 
-" Use folder icons in NERDTree
-let g:WebDevIconsUnicodeDecorateFolderNodes = 1
-let g:DevIconsEnableFoldersOpenClose = 1
-let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '
+" NERDTree / icons
+let g:WebDevIconsUnicodeDecorateFolderNodes = 1    " Enable folder icons
+let g:DevIconsEnableFoldersOpenClose = 1           " Animated folder icons
+let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '   " Less padding
 
 " REBINDS
 " -----------------------------------
@@ -130,7 +136,8 @@ let mapleader = ","
 " Use ; as an alias for : (skip the shift)
 nnoremap ; :
 
-" Quickly reload vimrc
+" Quickly edit/reload vimrc
+nmap <silent> <leader>ev :e $MYVIMRC<CR>
 nmap <silent> <leader>sv :source $MYVIMRC<CR>
 
 " CTRL-n = open NERDTree
