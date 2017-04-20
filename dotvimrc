@@ -77,6 +77,9 @@ set shiftround      " Indent to to nearest multiple of shiftwidth when using << 
 set smarttab        " Use shiftwidth at start of lines instead of tabstop
 
 set ignorecase      " Case insensitive searching
+if exists("&wildignorecase")
+    set wildignorecase " Case insensitive filename completion (i.e. in :e)
+endif
 set hlsearch        " Highlight search terms
 set incsearch       " Show search matches as you type
 
