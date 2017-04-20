@@ -5,7 +5,7 @@ def pairwise(iterable):
     return zip(a, a)
 
 def colorToHex(c):
-    return '#' + hex(int(c[0]*255))[2:] + hex(int(c[1]*255))[2:] + hex(int(c[2]*255))[2:]
+    return '#' + "{:02x}".format(int(c[0]*255)) + "{:02x}".format(int(c[1]*255)) + "{:02x}".format(int(c[2]*255))
 
 # Open file
 xml_file = ElementTree.parse('Molokai.itermcolors').getroot()
