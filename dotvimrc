@@ -20,6 +20,7 @@ Plug 'honza/vim-snippets'         " Collection of snippets
 Plug 'Townk/vim-autoclose'        " Automatically close brackets
 
 " Interface
+Plug 'tomasr/molokai'             " Color theme
 Plug 'vim-airline/vim-airline'    " Status bar
 Plug 'ryanoasis/vim-devicons'     " Icons in NERDTree/airline, needs to be loaded late
 
@@ -127,6 +128,7 @@ let g:airline#extensions#tabline#buffer_nr_show = 1
 let g:WebDevIconsUnicodeDecorateFolderNodes = 1    " Enable folder icons
 let g:DevIconsEnableFoldersOpenClose = 1           " Animated folder icons
 let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '   " Less padding
+let NERDTreeShowBookmarks=1                        " Always show bookmarks
 
 " REBINDS
 " -----------------------------------
