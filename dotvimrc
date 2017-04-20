@@ -13,12 +13,14 @@ call plug#begin()
 
 " Tools
 Plug 'scrooloose/nerdtree'        " File explorer
+Plug 'scrooloose/nerdcommenter'   " Quick commenting
 
 " Programming
 Plug 'SirVer/ultisnips'           " Snippet engine
 Plug 'honza/vim-snippets'         " Collection of snippets
 Plug 'Townk/vim-autoclose'        " Automatically close brackets
 Plug 'onerobotics/vim-karel'      " FANUC karel syntax
+Plug 'justinmk/vim-syntax-extra'  " Better C/C++ highlighting
 
 " Interface
 Plug 'tomasr/molokai'             " Color scheme
@@ -130,13 +132,10 @@ let g:WebDevIconsUnicodeDecorateFolderNodes = 1    " Enable folder icons
 let g:DevIconsEnableFoldersOpenClose = 1           " Animated folder icons
 let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '   " Less padding
 
-" User directx on windows
-if has('win32') || has('win64')
-    if (v:version == 704 && has("patch393")) || v:version > 704
-        set renderoptions=type:directx,level:0.75,gamma:1.25,contrast:0.25,
-                    \geom:1,renmode:5,taamode:1
-    endif
-endif
+" NERD Commenter
+let g:NERDCustomDelimiters = { 'karel': { 'left': '--' } }    " Add custom format for KAREL
+let g:NERDSpaceDelims = 1                                     " Add space after comment delimiter
+let g:NERDDefaultAlign = 'left'                               " Always left align comment delimiters instead of following code indentation
 
 " REBINDS
 " -----------------------------------
@@ -149,6 +148,10 @@ nnoremap ; :
 " Quickly edit/reload vimrc
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
 nmap <silent> <leader>sv :source $MYVIMRC<CR>
+
+" Quickly move between buffers
+map gn :bn<CR>
+map gp :bp<CR>
 
 " CTRL-n = open NERDTree
 map <C-n> :NERDTreeToggle<CR>
