@@ -18,7 +18,7 @@ Plug 'scrooloose/nerdcommenter'   " Quick commenting
 " Programming
 Plug 'SirVer/ultisnips'           " Snippet engine
 Plug 'honza/vim-snippets'         " Collection of snippets
-Plug 'Townk/vim-autoclose'        " Automatically close brackets
+Plug 'jiangmiao/auto-pairs'       " Automatically close brackets
 Plug 'onerobotics/vim-karel'      " FANUC karel syntax
 Plug 'justinmk/vim-syntax-extra'  " Better C/C++ highlighting
 
@@ -156,6 +156,7 @@ nmap <silent> <leader>sv :source $MYVIMRC<CR>
 " Quickly move between buffers
 map gn :bn<CR>
 map gp :bp<CR>
+map <C-b> :ls<CR>:b<Space>
 
 " CTRL-n = open NERDTree
 map <C-n> :NERDTreeToggle<CR>
