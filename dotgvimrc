@@ -10,7 +10,7 @@ set guioptions-=a            " Don't copy to clipboard on visual select
 if has('win32')
     set guifont=SauceCodePro_NF:h9
 elseif has('unix')
-    set guifont=UbuntuMonoDerivativePowerline\ Nerd\ Font:h11
+    set guifont=UbuntuMonoDerivativePowerline\ Nerd\ Font\ 11
 endif
 
 " Try to use directx on windows
