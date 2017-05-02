@@ -4,7 +4,7 @@
 set nocompatible
 set encoding=utf-8
 set shortmess+=I        " Hide intro message
-
+set viminfo="NONE"      " Disable session storing
 
 " PLUGINS
 " -----------------------------------
@@ -90,6 +90,9 @@ endif
 set hlsearch        " Highlight search terms
 set incsearch       " Show search matches as you type
 
+set cindent         " Use C-indenting rules for C (probably set already)
+set cinoptions+=g0  " Don't indent access specifiers (public, private)
+
 " set visualbell      " Don't beep
 " set noerrorbells    " Seriously, don't beep
 
@@ -161,6 +164,9 @@ let g:cpp_experimental_template_highlight = 1
 " Swap leader from \ to ,
 let mapleader = ","
 
+" Pasting without breaking indent
+set pastetoggle=<F2>
+
 " Use ; as an alias for : (skip the shift)
 nnoremap ; :
 
@@ -202,7 +208,7 @@ nnoremap <Tab> %
 vnoremap <Tab> %
 
 " Clear search register
-nmap <silent> <leader>/ :nohlsearch<CR>
+nmap <silent> <leader>/ :let @/=""<CR>:nohlsearch<CR>
 
 " Snippets, UltiSnips trigger keybinds
 let g:UltiSnipsExpandTrigger="<tab>"
