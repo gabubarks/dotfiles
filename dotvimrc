@@ -100,6 +100,9 @@ if has("clipboard")
     endif
 endif
 
+let g:AutoPairsMultilineClose = 0      " Don't jump to matching close brace
+                                       " on next line, only on same line
+
 
 " APPEARANCE
 " -----------------------------------
@@ -134,6 +137,11 @@ let g:airline#extensions#tabline#enabled = 1          " Show open buffers at the
 let g:airline#extensions#tabline#buffer_nr_show = 1   " and show buffer number
 let g:airline#extensions#tabline#fnamemod = ':t'      " Only show filename, not path
 
+if !exists('g:airline_symbols')                       " Check if dictionary exists before changing
+    let g:airline_symbols = {}
+endif
+let g:airline_symbols.maxlinenr=''                    " Don't show the L/N symbol in airline
+
 " NERDTree / icons
 let g:WebDevIconsUnicodeDecorateFolderNodes = 1    " Enable folder icons
 let g:DevIconsEnableFoldersOpenClose = 1           " Animated folder icons
@@ -144,6 +152,8 @@ let NERDTreeShowBookmarks=1                        " Always show bookmarks
 let g:NERDCustomDelimiters = { 'karel': { 'left': '--' } }    " Add custom format for KAREL
 let g:NERDSpaceDelims = 1                                     " Add space after comment delimiter
 let g:NERDDefaultAlign = 'left'                               " Always left align comment delimiters instead of following code indentation
+
+let g:cpp_experimental_template_highlight = 1
 
 
 " REBINDS
@@ -163,6 +173,9 @@ map gn :bn<CR>
 map gp :bp<CR>
 map <C-b> :ls<CR>:b<Space>
 
+" Close current buffer without closing window
+nmap <leader>q :bp<CR>:bd #<CR>
+
 " CTRL-n = open NERDTree
 map <C-n> :NERDTreeToggle<CR>
 
@@ -171,8 +184,9 @@ nnoremap <C-e> 2<C-e>
 nnoremap <C-y> 2<C-y>
 
 " Move through long wrapped lines instead of skipping to the next line
-nnoremap j gj
-nnoremap k gk
+" From https://www.reddit.com/r/vim/comments/2k4cbr/problem_with_gj_and_gk/
+nnoremap <expr> j v:count ? 'j' : 'gj'
+nnoremap <expr> k v:count ? 'k' : 'gk'
 
 " Quickly get out of insert mode without reaching for escape
 inoremap jj <Esc>
