@@ -13,22 +13,24 @@ filetype off
 call plug#begin()
 
 " Tools
-Plug 'scrooloose/nerdtree'                " File explorer
-Plug 'scrooloose/nerdcommenter'           " Quick commenting
+Plug 'scrooloose/nerdtree'                        " File explorer
+Plug 'scrooloose/nerdcommenter'                   " Quick commenting
 
 " Programming
-Plug 'SirVer/ultisnips'                   " Snippet engine
-Plug 'honza/vim-snippets'                 " Collection of snippets
-Plug 'jiangmiao/auto-pairs'               " Automatically close brackets
-Plug 'onerobotics/vim-karel'              " FANUC karel syntax
-Plug 'octol/vim-cpp-enhanced-highlight'   " Better C/C++ highlighting
+Plug 'SirVer/ultisnips'                           " Snippet engine
+Plug 'honza/vim-snippets'                         " Collection of snippets
+Plug 'jiangmiao/auto-pairs'                       " Automatically close brackets
+Plug 'octol/vim-cpp-enhanced-highlight'           " Better C/C++ highlighting
+Plug 'onerobotics/vim-karel'                      " FANUC karel syntax highlight
+Plug 'ekalinin/Dockerfile.vim'                    " Dockerfile syntax highlight
 
 " Interface
-Plug 'tomasr/molokai'                     " Color scheme
-Plug 'vim-airline/vim-airline'            " Status bar
-Plug 'vim-airline/vim-airline-themes'     " Status bar themes
-Plug 'justinmk/vim-syntax-extra'          " Icons in NERDTree/airline, needs to be loaded late
-Plug 'airblade/vim-gitgutter'             " Show git changes in ruler
+Plug 'tomasr/molokai'                             " Color scheme
+Plug 'vim-airline/vim-airline'                    " Status bar
+Plug 'vim-airline/vim-airline-themes'             " Status bar themes
+Plug 'justinmk/vim-syntax-extra'                  " Icons in NERDTree/airline, needs to be loaded late
+Plug 'airblade/vim-gitgutter'                     " Show git changes in ruler
+" Plug 'tiagofumo/vim-nerdtree-syntax-highlight'    " Color by filename in NERDTree
 
 
 " Update and initialize plugins
