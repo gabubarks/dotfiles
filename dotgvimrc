@@ -4,6 +4,7 @@
 set guioptions-=T            " Remove toolbar
 set guioptions-=rL           " Remove right/left scroll bars
 set guioptions-=a            " Don't copy to clipboard on visual select
+set guioptions+=c            " Don't show popup dialogs; prefer text prompts in command bar
 
 " Font
 " Different fonts for each OS because of font rendering differences

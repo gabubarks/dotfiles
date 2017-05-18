@@ -172,6 +172,9 @@ set pastetoggle=<F2>
 " Use ; as an alias for : (skip the shift)
 nnoremap ; :
 
+" Force save if we need root permissions
+cmap w!! w !sudo tee > /dev/null %
+
 " Quickly edit/reload vimrc
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
 nmap <silent> <leader>sv :source $MYVIMRC<CR>
