@@ -15,6 +15,7 @@ call plug#begin()
 " Tools
 Plug 'scrooloose/nerdtree'                        " File explorer
 Plug 'scrooloose/nerdcommenter'                   " Quick commenting
+Plug 'tpope/vim-fugitive'                         " Git wrapper
 
 " Programming
 Plug 'SirVer/ultisnips'                           " Snippet engine
@@ -30,6 +31,7 @@ Plug 'vim-airline/vim-airline'                    " Status bar
 Plug 'vim-airline/vim-airline-themes'             " Status bar themes
 Plug 'justinmk/vim-syntax-extra'                  " Icons in NERDTree/airline, needs to be loaded late
 Plug 'airblade/vim-gitgutter'                     " Show git changes in ruler
+Plug 'majutsushi/tagbar'                          " Show ctags in sidebar
 " Plug 'tiagofumo/vim-nerdtree-syntax-highlight'    " Color by filename in NERDTree
 
 
@@ -108,6 +110,9 @@ endif
 let g:AutoPairsMultilineClose = 0      " Don't jump to matching close brace
                                        " on next line, only on same line
 
+" Filetype specific settings
+" Set wraparound for text-like files
+autocmd FileType    text,markdown   setlocal wrap linebreak
 
 " APPEARANCE
 " -----------------------------------
@@ -189,6 +194,9 @@ nmap <leader>q :bp<CR>:bd #<CR>
 
 " CTRL-n = open NERDTree
 map <C-n> :NERDTreeToggle<CR>
+
+" CTRL-t = open Tagbar
+map <C-t> :TagbarToggle<CR>
 
 " Faster viewport scrolling
 nnoremap <C-e> 2<C-e>

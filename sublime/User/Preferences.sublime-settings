@@ -10,6 +10,7 @@
 	"highlight_line": true,
 	"ignored_packages":
 	[
+		"CMake",
 		"Vintage"
 	],
 	"indent_guide_options":
