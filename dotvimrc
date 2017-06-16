@@ -157,6 +157,10 @@ let g:WebDevIconsUnicodeDecorateFolderNodes = 1    " Enable folder icons
 let g:DevIconsEnableFoldersOpenClose = 1           " Animated folder icons
 let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '   " Less padding
 let NERDTreeShowBookmarks=1                        " Always show bookmarks
+let NERDTreeIgnore = [
+\   '\.pyc$',
+\   '^__pycache__$',
+\]
 
 " NERD Commenter
 let g:NERDCustomDelimiters = { 'karel': { 'left': '--' } }    " Add custom format for KAREL
