@@ -1,3 +1,4 @@
+" https://github.com/LocalLupine/dotfiles
 " INTIALIZATION
 " Some defaults for multiplatform compatibility
 " i.e. gvim for windows still sets compatible even when a .vimrc exists
