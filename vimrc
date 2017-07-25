@@ -17,6 +17,7 @@ call plug#begin()
 Plug 'scrooloose/nerdtree'                        " File explorer
 Plug 'scrooloose/nerdcommenter'                   " Quick commenting
 Plug 'tpope/vim-fugitive'                         " Git wrapper
+Plug 'wincent/command-t'                          " File switcher
 
 " Programming
 Plug 'SirVer/ultisnips'                           " Snippet engine
@@ -108,8 +109,8 @@ if has("clipboard")
     endif
 endif
 
-let g:AutoPairsMultilineClose = 0      " Don't jump to matching close brace
-                                       " on next line, only on same line
+let g:AutoPairsMultilineClose = 0  " Don't jump to matching close brace
+                                   " on next line, only on same line
 
 " Filetype specific settings
 " Set wraparound for text-like files
