@@ -1,3 +1,4 @@
+" https://github.com/LocalLupine/dotfiles
 " INTIALIZATION
 " Some defaults for multiplatform compatibility
 " i.e. gvim for windows still sets compatible even when a .vimrc exists
@@ -16,6 +17,7 @@ call plug#begin()
 Plug 'scrooloose/nerdtree'                        " File explorer
 Plug 'scrooloose/nerdcommenter'                   " Quick commenting
 Plug 'tpope/vim-fugitive'                         " Git wrapper
+Plug 'wincent/command-t'                          " File switcher
 
 " Programming
 Plug 'SirVer/ultisnips'                           " Snippet engine
@@ -107,8 +109,8 @@ if has("clipboard")
     endif
 endif
 
-let g:AutoPairsMultilineClose = 0      " Don't jump to matching close brace
-                                       " on next line, only on same line
+let g:AutoPairsMultilineClose = 0  " Don't jump to matching close brace
+                                   " on next line, only on same line
 
 " Filetype specific settings
 " Set wraparound for text-like files
@@ -157,12 +159,18 @@ let g:WebDevIconsUnicodeDecorateFolderNodes = 1    " Enable folder icons
 let g:DevIconsEnableFoldersOpenClose = 1           " Animated folder icons
 let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '   " Less padding
 let NERDTreeShowBookmarks=1                        " Always show bookmarks
+let NERDTreeIgnore = [
+\   '\.pyc$',
+\   '^__pycache__$',
+\]
 
 " NERD Commenter
 let g:NERDCustomDelimiters = { 'karel': { 'left': '--' } }    " Add custom format for KAREL
 let g:NERDSpaceDelims = 1                                     " Add space after comment delimiter
 let g:NERDDefaultAlign = 'left'                               " Always left align comment delimiters instead of following code indentation
+let g:NERDAltDelims_python = 1                                " Default delim already adds a space after #, so use the alt which doesn't
 
+" CPP Enhanced Highlight
 let g:cpp_experimental_template_highlight = 1
 
 

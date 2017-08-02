@@ -9,12 +9,21 @@ set guioptions+=c            " Don't show popup dialogs; prefer text prompts in 
 " Font
 " Different fonts for each OS because of font rendering differences
 if has('win32')
+    if has("gui_running")
+        " Maximize window
+        au GUIEnter * simalt ~x
+    endif
     set guifont=SauceCodePro_NF:h9
 elseif has('gui_macvim')
     set guifont=Meslo\ LG\ M\ Regular\ for\ Powerline\ Nerd\ Font\ Complete\ Mono:h12
 elseif has('unix')
+    if has("gui_running")
+        " Maximize window
+        set lines=999 columns=999
+    endif
     set guifont=UbuntuMonoDerivativePowerline\ Nerd\ Font\ 11
 endif
+
 
 " Try to use directx on windows
 " if has('win32') || has('win64')
