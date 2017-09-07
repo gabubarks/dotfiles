@@ -1,14 +1,15 @@
 " https://github.com/LocalLupine/dotfiles
-" INTIALIZATION
+
+" INITIALIZATION {{{ "
 " Some defaults for multiplatform compatibility
 " i.e. gvim for windows still sets compatible even when a .vimrc exists
 set nocompatible
 set encoding=utf-8
 set shortmess+=I        " Hide intro message
 set viminfo="NONE"      " Disable session storing
+" }}} INITIALIZATION "
 
-" PLUGINS
-" -----------------------------------
+" PLUGINS {{{ "
 " Initial vim-plug setup
 filetype off
 call plug#begin()
@@ -20,10 +21,11 @@ Plug 'tpope/vim-fugitive'                         " Git wrapper
 Plug 'wincent/command-t'                          " File switcher
 
 " Programming
+" Plug 'vim-syntastic/syntastic'                    " Syntax checking
+Plug 'sheerun/vim-polyglot'                       " Language packs: syntax, indent, etc
 Plug 'SirVer/ultisnips'                           " Snippet engine
 Plug 'honza/vim-snippets'                         " Collection of snippets
-Plug 'jiangmiao/auto-pairs'                       " Automatically close brackets
-Plug 'octol/vim-cpp-enhanced-highlight'           " Better C/C++ highlighting
+Plug 'LocalLupine/auto-pairs'                     " Automatically close brackets
 Plug 'onerobotics/vim-karel'                      " FANUC karel syntax highlight
 Plug 'ekalinin/Dockerfile.vim'                    " Dockerfile syntax highlight
 
@@ -34,18 +36,15 @@ Plug 'vim-airline/vim-airline-themes'             " Status bar themes
 Plug 'justinmk/vim-syntax-extra'                  " Icons in NERDTree/airline, needs to be loaded late
 Plug 'airblade/vim-gitgutter'                     " Show git changes in ruler
 Plug 'majutsushi/tagbar'                          " Show ctags in sidebar
-" Plug 'tiagofumo/vim-nerdtree-syntax-highlight'    " Color by filename in NERDTree
-
 
 " Update and initialize plugins
 call plug#end()
 " ^ This also automatically sets:
 " filetype plugin indent on
 " syntax enable
+" }}} PLUGINS "
 
-
-" BEHAVIOUR
-" -----------------------------------
+" BEHAVIOUR {{{ "
 " Hide buffers instead of closing them
 " Absolutely essential since this allows multiple
 " files to be open at the same time.
@@ -102,6 +101,8 @@ set cinoptions+=g0  " Don't indent access specifiers (public, private)
 " set visualbell      " Don't beep
 " set noerrorbells    " Seriously, don't beep
 
+set foldmethod=marker " Fold using markers
+
 if has("clipboard")
     set clipboard=unnamed  " Copy to system clipboard
     if has("unnamedplus")
@@ -110,14 +111,27 @@ if has("clipboard")
 endif
 
 let g:AutoPairsMultilineClose = 0  " Don't jump to matching close brace
-                                   " on next line, only on same line
+let g:AutoPairsFlyMode = 0         " on next line, only on same line
+
+let g:AutoPairsNeverJumpLines=1
+let g:AutoPairsOnlyBeforeClose=1
 
 " Filetype specific settings
 " Set wraparound for text-like files
 autocmd FileType    text,markdown   setlocal wrap linebreak
 
-" APPEARANCE
-" -----------------------------------
+" YouCompleteMe
+" let g:ycm_global_ycm_extra_conf = '~/.vim/plugged/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+" let g:ycm_enable_diagnostic_signs = 0
+" let g:ycm_enable_diagnostic_highlighting = 0
+" set completeopt-=preview
+
+" Use default syntax highlighting for some filetypes
+" Default is better than polyglot for these
+let g:polyglot_disabled = ['python']
+" }}} BEHAVIOUR "
+
+" APPEARANCE {{{ "
 " Color theme
 colorscheme molokai
 
@@ -172,10 +186,9 @@ let g:NERDAltDelims_python = 1                                " Default delim al
 
 " CPP Enhanced Highlight
 let g:cpp_experimental_template_highlight = 1
+" }}} APPEARANCE "
 
-
-" REBINDS
-" -----------------------------------
+" REBINDS {{{ "
 " Swap leader from \ to ,
 let mapleader = ","
 
@@ -231,9 +244,14 @@ vnoremap <Tab> %
 " Clear search register
 nmap <silent> <leader>/ :let @/=""<CR>:nohlsearch<CR>
 
+" Map spacebar to toggle folds
+nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
+
+
 " Snippets, UltiSnips trigger keybinds
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsListSnippets="<C-l>"
 let g:UltiSnipsJumpForwardTrigger="<C-j>"
 let g:UltiSnipsJumpBackwardTrigger="<C-k>"
+" }}} REBINDS "
 
