@@ -9,22 +9,22 @@ from vimsnippets import foldmarker, make_box, get_comment_format
 endglobal
 
 snippet fold "Insert a vim fold marker" b
-`!p snip.rv = get_comment_format()[0]` ${1:Fold description} `!p snip.rv = foldmarker()[0]`${2:1} `!p snip.rv = get_comment_format()[2].strip()`
+`!p snip.rv = get_comment_format()[0].strip()` ${1:Fold description} `!p snip.rv = foldmarker()[0]`${2:1} `!p snip.rv = get_comment_format()[2].strip()`
 endsnippet
 
 snippet foldc "Insert a vim fold close marker" b
-`!p snip.rv = get_comment_format()[0]` ${2:1}`!p snip.rv = foldmarker()[1]` `!p snip.rv = get_comment_format()[2].strip()`
+`!p snip.rv = get_comment_format()[0].strip()` ${2:1}`!p snip.rv = foldmarker()[1]` `!p snip.rv = get_comment_format()[2].strip()`
 endsnippet
 
 snippet foldp "Insert a vim fold marker pair" b
-`!p snip.rv = get_comment_format()[0]` ${1:Fold description} `!p snip.rv = foldmarker()[0]` `!p snip.rv = get_comment_format()[2].strip()`
+`!p snip.rv = get_comment_format()[0].strip()` ${1:Fold description} `!p snip.rv = foldmarker()[0]` `!p snip.rv = get_comment_format()[2].strip()`
 ${2:${VISUAL:Content}}
-`!p snip.rv = get_comment_format()[0]` `!p snip.rv = foldmarker()[1]` $1 `!p snip.rv = get_comment_format()[2].strip()`
+`!p snip.rv = get_comment_format()[0].strip()` `!p snip.rv = foldmarker()[1]` $1 `!p snip.rv = get_comment_format()[2].strip()`
 endsnippet
 
 # Horizontal line
 snippet hl "Insert a vim fold marker pair" b
-`!p snip.rv = get_comment_format()[0]`========================================================================
+`!p snip.rv = get_comment_format()[0].strip()` ========================================================================
 
 endsnippet
 
