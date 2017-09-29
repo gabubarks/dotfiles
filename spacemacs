@@ -68,7 +68,7 @@ values."
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '()
+   dotspacemacs-additional-packages '(all-the-icons)
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
@@ -340,18 +340,31 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
-  (require 'helm-bookmark)
-  ;; (with-eval-after-load 'evil-maps
-  ;;   (define-key evil-motion-state-map (kbd ":") 'evil-repeat-find-char)
-  ;;   (define-key evil-motion-state-map (kbd ";") 'evil-ex))
-  (setq-default indent-tabs-mode nil)
-  (setq-default tab-width 4)
-  (setq indent-line-function 'insert-tab)
-  (global-company-mode t)
-  (setq
-   create-lockfiles nil
-   powerline-default-separator 'arrow
-   neo-theme 'nerd
+
+  ;; Basic settings
+  (require 'helm-bookmark)                 ;; Fix exception on reload
+  (require 'all-the-icons)
+
+  (setq-default indent-tabs-mode nil       ;; Tabs become spaces
+                tab-width 4)               ;; Tabs are 4 spaces wide
+  (setq indent-line-function 'insert-tab)  ;; Indent key creates tabs (that become spaces)
+
+  (global-company-mode t)                  ;; Use company everywhere
+
+  ;; Define an evil "word" as a "symbol"
+  ;; This makes "*iw" motions work like they do in Vim
+  (with-eval-after-load 'evil
+    (defalias #'forward-evil-word #'forward-evil-symbol))
+
+  ;; Let "o" perform "enter" in neotree
+  ;; This mimics NERDTree behaviour
+  (with-eval-after-load 'neotree
+    (define-key neotree-mode-map (kbd "o") 'neotree-enter))
+
+  ;; Other settings
+  (setq create-lockfiles nil               ;; Don't pollute directories with lockfiles
+        powerline-default-separator 'arrow ;; Powerline styling like vim-powerline
+        neo-theme 'icons                   ;; Neotree all-the-icons
    ))
 
 ;; Do not write anything past this comment. This is where Emacs will
