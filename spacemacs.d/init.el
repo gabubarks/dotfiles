@@ -351,16 +351,12 @@ you should place your code here."
 
   (global-company-mode t)                  ;; Use company everywhere
 
-  ;; Define an evil "word" as a "symbol"
-  ;; This makes "*iw" motions work like they do in Vim
   (with-eval-after-load 'evil
-    (defalias #'forward-evil-word #'forward-evil-symbol))
+    (defalias #'forward-evil-word #'forward-evil-symbol)) ;; Define an evil "word" as a "symbol" for motions (ex. "ciw")
 
-  ;; Let "o" perform "enter" in neotree
-  ;; This mimics NERDTree behaviour
   (with-eval-after-load 'neotree
-    (define-key neotree-mode-map (kbd "o") 'neotree-enter)
-    (setq neo-hidden-regexp-list '("^\\." "\\.pyc$" "~$" "^#.*#$" "\\.elc$" "^__pycache__$")))
+    (define-key neotree-mode-map (kbd "o") 'neotree-enter)                                     ;; Let "o" open files too
+    (setq neo-hidden-regexp-list '("^\\." "\\.pyc$" "~$" "^#.*#$" "\\.elc$" "^__pycache__$"))) ;; Hide __pycache__
 
   ;; Other settings
   (setq create-lockfiles nil               ;; Don't pollute directories with lockfiles
