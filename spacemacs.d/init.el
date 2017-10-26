@@ -359,6 +359,8 @@ you should place your code here."
   (setq indent-line-function 'insert-tab)  ;; Indent key creates tabs (that become spaces)
 
   (global-company-mode t)                  ;; Use company everywhere
+  (setq company-idle-delay 0.1)            ;; Fast company
+  (setq company-minimum-prefix-length 1)   ;; Even a single character; so that snippets show up
 
   (with-eval-after-load 'evil
     (defalias #'forward-evil-word #'forward-evil-symbol)) ;; Define an evil "word" as a "symbol" for motions (ex. "ciw")
