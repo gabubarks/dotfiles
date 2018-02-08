@@ -41,8 +41,12 @@
     "xml_setvar")
   "All built-in functions in the KAREL language.  Used for font locking.")
 
+(defconst karel-mode-statements
+  '("abort" "delay" "pause" "wait for" "hold" "continue" "attach" "release" "read" "write")
+  "All statements in the KAREL language.  Used for font locking.")
+
 (defconst karel-mode-keywords
-  '("begin" "end" "const" "var" "type" "program" "routine" "from" "in" "while" "do" "endwhile" "for" "to" "downto" "endfor" "if" "else" "endif" "repeat" "until" "return" "state")
+  '("begin" "end" "const" "var" "type" "program" "routine" "from" "in" "while" "do" "endwhile" "for" "to" "downto" "endfor" "if" "then" "else" "endif" "repeat" "until" "return" "state")
   "All keywords in the KAREL language.  Used for font locking.")
 
 (defconst karel-mode-constants
@@ -70,6 +74,7 @@
       (let* (
              ;; generate regex string for each category of keywords
              (x-builtins-regexp   (regexp-opt karel-mode-builtins 'words))
+             (x-statements-regexp (regexp-opt karel-mode-statements 'words))
              (x-keywords-regexp   (regexp-opt karel-mode-keywords 'words))
              (x-constants-regexp  (regexp-opt karel-mode-constants 'words))
              (x-types-regexp      (regexp-opt karel-mode-types 'words))
@@ -77,9 +82,10 @@
              )
 
         `(
-          (,x-builtins-regexp . font-lock-builtin-face)
-          ("\\<\\(\\sw+\\) ?(" 1 font-lock-function-name-face)
+          (,x-builtins-regexp . font-lock-builtin-face)        ;; Builtin functions
+          ("\\<\\(\\sw+\\) ?(" 1 font-lock-function-name-face) ;; Custom functions
           (,x-directives-regexp . font-lock-builtin-face)
+          (,x-statements-regexp . font-lock-builtin-face)
           (,x-keywords-regexp . font-lock-keyword-face)
           (,x-types-regexp . font-lock-type-face)
           (,x-constants-regexp . font-lock-constant-face)
