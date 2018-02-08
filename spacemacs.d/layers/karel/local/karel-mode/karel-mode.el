@@ -22,7 +22,7 @@
     "ini_dyn_dise" "ini_dyn_disi" "ini_dyn_disp" "ini_dyn_disr" "ini_dyn_diss"
     "init_queue"   "init_tbl"     "insert_node"  "insert_queue" "io_mod_type"  "kcl"
     "kcl_no_wait"  "kcl_status"   "load"         "load_status"  "lock_group"   "modify_queue"
-    "mount_dev"    "move_file"    "msg_connect"  "msg_diso"     "msg_ping"     "open_tpe"
+    "mount_dev"    "move_file"    "msg_connect"  "msg_disco"    "msg_ping"     "open_tpe"
     "pause_task"   "pend_sema"    "pipe_config"  "pop_key_rd"   "pos_reg_type" "post_err"
     "post_err_l"   "post_sema"    "print_file"   "prog_backup"  "prog_clear"   "prog_restore"
     "prog_list"    "purge_dev"    "push_key_rd"  "read_dict"    "read_dict_v"  "read_kb"
@@ -69,14 +69,16 @@
 (setq karel-font-lock-keywords
       (let* (
              ;; generate regex string for each category of keywords
-             (x-builtins-regexp  (regexp-opt karel-mode-builtins 'words))
-             (x-keywords-regexp  (regexp-opt karel-mode-keywords 'words))
-             (x-constants-regexp (regexp-opt karel-mode-constants 'words))
-             (x-types-regexp     (regexp-opt karel-mode-types 'words))
+             (x-builtins-regexp   (regexp-opt karel-mode-builtins 'words))
+             (x-keywords-regexp   (regexp-opt karel-mode-keywords 'words))
+             (x-constants-regexp  (regexp-opt karel-mode-constants 'words))
+             (x-types-regexp      (regexp-opt karel-mode-types 'words))
+             (x-directives-regexp (regexp-opt karel-mode-directives 'words))
              )
 
         `(
           (,x-builtins-regexp . font-lock-builtin-face)
+          (,x-directives-regexp . font-lock-builtin-face)
           (,x-keywords-regexp . font-lock-keyword-face)
           (,x-types-regexp . font-lock-type-face)
           (,x-constants-regexp . font-lock-constant-face)
