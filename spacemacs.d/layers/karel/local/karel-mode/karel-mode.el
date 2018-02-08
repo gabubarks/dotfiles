@@ -42,7 +42,7 @@
   "All built-in functions in the KAREL language.  Used for font locking.")
 
 (defconst karel-mode-keywords
-  '("begin" "end" "const" "var" "from" "in" "do" "else" "for" "if" "return" "state" "while")
+  '("begin" "end" "const" "var" "type" "program" "routine" "from" "in" "do" "else" "for" "if" "return" "state" "while")
   "All keywords in the KAREL language.  Used for font locking.")
 
 (defconst karel-mode-constants
