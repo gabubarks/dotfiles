@@ -62,15 +62,18 @@ values."
      (c-c++ :variables
             c-c++-default-mode-for-headers 'c++-mode
             c-c++-enable-clang-support t)
+     csharp
+     html
      javascript
      windows-scripts
      yaml
      markdown
      nginx
      docker
-
      ;; === APPEARANCE ===
      themes-megapack
+     ;; === CUSTOM ===
+     karel
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
