@@ -41,8 +41,15 @@
     "xml_setvar")
   "All built-in functions in the KAREL language.  Used for font locking.")
 
+(defconst karel-mode-conditionals
+  '("if" "then" "else" "endif")
+  "Conditional keywords in the KAREL language.  Used for font locking.")
+
 (defconst karel-mode-statements
-  '("abort" "delay" "pause" "wait for" "hold" "continue" "attach" "release" "read" "write")
+  '("abort" "delay" "pause" "wait for" "hold" "continue" "attach" "release"
+    "read" "write" "open file" "close file" "cancel file" "open hand" "close hand"
+    "relax hand" "enable condition" "disable condition" "purge condition"
+    "connect timer" "disconnect timer" "go to")
   "All statements in the KAREL language.  Used for font locking.")
 
 (defconst karel-mode-keywords
@@ -73,17 +80,19 @@
 (setq karel-font-lock-keywords
       (let* (
              ;; generate regex string for each category of keywords
-             (x-builtins-regexp   (regexp-opt karel-mode-builtins 'words))
-             (x-statements-regexp (regexp-opt karel-mode-statements 'words))
-             (x-keywords-regexp   (regexp-opt karel-mode-keywords 'words))
-             (x-constants-regexp  (regexp-opt karel-mode-constants 'words))
-             (x-types-regexp      (regexp-opt karel-mode-types 'words))
-             (x-directives-regexp (regexp-opt karel-mode-directives 'words))
+             (x-builtins-regexp     (regexp-opt karel-mode-builtins 'words))
+             (x-statements-regexp   (regexp-opt karel-mode-statements 'words))
+             (x-conditionals-regexp (regexp-opt karel-mode-conditionals 'words))
+             (x-keywords-regexp     (regexp-opt karel-mode-keywords 'words))
+             (x-constants-regexp    (regexp-opt karel-mode-constants 'words))
+             (x-types-regexp        (regexp-opt karel-mode-types 'words))
+             (x-directives-regexp   (regexp-opt karel-mode-directives 'words))
              )
 
         `(
+          (,x-conditionals-regexp . font-lock-keyword-face)    ;; Conditionals, must come before functions
           (,x-builtins-regexp . font-lock-builtin-face)        ;; Builtin functions
-          ("\\<\\(\\sw+\\) ?(" 1 font-lock-function-name-face) ;; Custom functions
+          ("\\<\\(\\sw+\\) ?(" 1 font-lock-function-name-face) ;; User functions
           (,x-directives-regexp . font-lock-builtin-face)
           (,x-statements-regexp . font-lock-builtin-face)
           (,x-keywords-regexp . font-lock-keyword-face)
