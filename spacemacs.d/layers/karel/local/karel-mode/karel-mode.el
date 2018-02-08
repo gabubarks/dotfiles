@@ -78,6 +78,7 @@
 
         `(
           (,x-builtins-regexp . font-lock-builtin-face)
+          ("\\<\\(\\sw+\\) ?(" 1 font-lock-function-name-face)
           (,x-directives-regexp . font-lock-builtin-face)
           (,x-keywords-regexp . font-lock-keyword-face)
           (,x-types-regexp . font-lock-type-face)
@@ -90,7 +91,7 @@
   (let ((syntax-table (make-syntax-table)))
     (modify-syntax-entry ?\' "\"" syntax-table)    ;; Strings
     (modify-syntax-entry ?\" "\"" syntax-table)    ;; ^
-    (modify-syntax-entry ?_ "_" syntax-table)      ;; Symbols may contain underscore
+    (modify-syntax-entry ?_ "w" syntax-table)      ;; Symbols may contain underscore
     (modify-syntax-entry ?- ". 1234" syntax-table) ;; "--" for comments
     (modify-syntax-entry ?\n ">" syntax-table)     ;; Newline is comment ender
     (modify-syntax-entry ?* "." syntax-table)
@@ -100,6 +101,7 @@
     (modify-syntax-entry ?\} "){" syntax-table)
     (modify-syntax-entry ?\[ "(]" syntax-table)
     (modify-syntax-entry ?\] ")[" syntax-table)
+    (modify-syntax-entry ?\\ "w" syntax-table)
     syntax-table)
   "Syntax table in use in `karel-mode' buffers.")
 
@@ -110,6 +112,9 @@
   (set (make-local-variable 'comment-start) "-- ")
   (set (make-local-variable 'comment-start-skip) "--+ *")
   (setq font-lock-defaults '((karel-font-lock-keywords) nil t)))
+
+;;;###autoload
+(add-to-list 'auto-mode-alist '("\\.kl\\'" . karel-mode))
 
 (provide 'karel-mode)
 
