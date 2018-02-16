@@ -1,5 +1,10 @@
 ;;; karel-mode.el --- Fanuc KAREL syntax highlighting
 
+(defgroup karel nil
+  "Major mode for editing KAREL source in Emacs."
+  :link '(custom-group-link :tag "Font Lock Faces group" font-lock-faces)
+  :group 'languages)
+
 (defconst karel-mode-builtins
   '("abort_task"   "act_screen"   "act_tbl"      "add_bynamepc" "add_dict"     "add_intpc"
     "add_realpc"   "add_stringpc" "append_node"  "append_queue" "att_window_d"
@@ -53,7 +58,9 @@
   "All statements in the KAREL language.  Used for font locking.")
 
 (defconst karel-mode-keywords
-  '("begin" "end" "const" "var" "type" "program" "routine" "from" "in" "while" "do" "endwhile" "for" "to" "downto" "endfor" "if" "then" "else" "endif" "repeat" "until" "return" "state")
+  '("begin" "end" "const" "var" "type" "program" "routine" "from" "in" "while"
+    "do" "endwhile" "for" "to" "downto" "endfor" "if" "then" "else" "endif"
+    "repeat" "until" "return" "state" "structure" "endstructure")
   "All keywords in the KAREL language.  Used for font locking.")
 
 (defconst karel-mode-constants
@@ -107,7 +114,7 @@
     (modify-syntax-entry ?\' "\"" syntax-table)    ;; Strings
     (modify-syntax-entry ?\" "\"" syntax-table)    ;; ^
     (modify-syntax-entry ?_ "w" syntax-table)      ;; Symbols may contain underscore
-    (modify-syntax-entry ?- ". 1234" syntax-table) ;; "--" for comments
+    (modify-syntax-entry ?- ". 12" syntax-table)   ;; "--" for comments
     (modify-syntax-entry ?\n ">" syntax-table)     ;; Newline is comment ender
     (modify-syntax-entry ?* "." syntax-table)
     (modify-syntax-entry ?\( "." syntax-table)
@@ -121,11 +128,13 @@
   "Syntax table in use in `karel-mode' buffers.")
 
 ;;;###autoload
-(define-derived-mode karel-mode fundamental-mode "Fanuc-KAREL"
+(define-derived-mode karel-mode prog-mode "Fanuc-KAREL"
   :syntax-table karel-mode-syntax-table
   "Major mode for editing KAREL"
   (set (make-local-variable 'comment-start) "-- ")
   (set (make-local-variable 'comment-start-skip) "--+ *")
+  ;; (set (make-local-variable 'indent-line-function) 'karel-indent-line)
+  (set (make-local-variable 'indent-tabs-mode) nil)
   (setq font-lock-defaults '((karel-font-lock-keywords) nil t)))
 
 ;;;###autoload
