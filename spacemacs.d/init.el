@@ -370,13 +370,28 @@ you should place your code here."
     (defalias #'forward-evil-word #'forward-evil-symbol)) ;; Define an evil "word" as a "symbol" for motions (ex. "ciw")
 
   (with-eval-after-load 'neotree
-    (define-key neotree-mode-map (kbd "o") 'neotree-enter)                                     ;; Let "o" open files too
-    (setq neo-hidden-regexp-list '("^\\." "\\.pyc$" "~$" "^#.*#$" "\\.elc$" "^__pycache__$"))) ;; Hide __pycache__
+    (define-key neotree-mode-map (kbd "o") 'neotree-enter)                                   ;; Let "o" open files too
+    (setq neo-hidden-regexp-list '(
+            ;; vcs folders
+            "^\\.\\(git\\|hg\\|svn\\)$"
+            ;; compiled files
+            "\\.\\(pyc\\|o\\|elc\\|lock\\|css.map\\)$"
+            ;; generated files, caches or local pkgs
+            "^\\(__pycache__\\|node_modules\\|vendor\\|.\\(project\\|cask\\|yardoc\\|sass-cache\\)\\)$"
+            ;; backup files, hidden files/folders
+            "~$"
+            "^#.*#$")
+          neo-create-file-auto-open nil
+          neo-banner-message ""
+          neo-show-hidden-files nil
+          neo-confirm-create-file #'off-p
+          neo-confirm-create-directory #'off-p
+          neo-theme 'ascii                   ;; Neotree all-the-icons
+     ))
 
   ;; Other settings
   (setq create-lockfiles nil               ;; Don't pollute directories with lockfiles
         powerline-default-separator 'slant ;; Powerline styling like vim-powerline
-        neo-theme 'icons                   ;; Neotree all-the-icons
    ))
 
 ;; Do not write anything past this comment. This is where Emacs will
