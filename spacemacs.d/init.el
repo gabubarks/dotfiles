@@ -70,8 +70,11 @@ values."
      markdown
      nginx
      docker
+     rust
+
      ;; === APPEARANCE ===
      ;; themes-megapack
+
      ;; === CUSTOM ===
      karel
      )
@@ -343,8 +346,12 @@ executes.
  This function is mostly useful for variables that need to be set
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
-  (my-setup-indent 4)
-  )
+  (my-setup-indent 4))
+
+(defun gabu-c++-mode-hook ()
+  (c-set-offset 'arglist-intro '+)
+  (c-set-offset 'arglist-close 0)
+  (c-set-offset 'substatement-open 0))
 
 (defun dotspacemacs/user-config ()
   "Configuration function for user code.
@@ -354,10 +361,14 @@ This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
 
-  ;; Basic settings
+  ;; Requires
   (require 'helm-bookmark)                 ;; Fix exception on reload
   (require 'all-the-icons)
 
+  ;; Mode hooks
+  (add-hook 'c++-mode-hook 'gabu-c++-mode-hook)
+
+  ;; Basic settings
   (setq-default indent-tabs-mode nil       ;; Tabs become spaces
                 tab-width 4)               ;; Tabs are 4 spaces wide
   (setq indent-line-function 'insert-tab)  ;; Indent key creates tabs (that become spaces)
