@@ -37,15 +37,11 @@ values."
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
      ;; better-defaults
-     ;; git
-     ;; markdown
-     ;; org
      ;; (shell :variables
      ;;        shell-default-height 30
      ;;        shell-default-position 'bottom)
      ;; spell-checking
      ;; syntax-checking
-     ;; version-control
 
      ;; === BEHAVIOUR ===
      helm
@@ -71,6 +67,9 @@ values."
      nginx
      docker
      rust
+
+     ;; === APPLICATIONS ===
+     org
 
      ;; === APPEARANCE ===
      ;; themes-megapack
