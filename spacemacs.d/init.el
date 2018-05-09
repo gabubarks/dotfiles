@@ -358,6 +358,7 @@ before packages are loaded. If you are unsure, you should try in setting them in
 
 (defun gabu-c++-mode-hook ()
   (c-set-offset 'arglist-intro '+)
+  (c-set-offset 'innamespace [0])
   (c-set-offset 'arglist-close 0)
   (c-set-offset 'substatement-open 0))
 
