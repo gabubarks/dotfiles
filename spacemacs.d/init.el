@@ -63,6 +63,7 @@ values."
      javascript
      windows-scripts
      yaml
+     csv
      markdown
      nginx
      docker
@@ -83,6 +84,8 @@ values."
    ;; configuration in `dotspacemacs/user-config'.
    dotspacemacs-additional-packages '(all-the-icons
                                       yasnippet-snippets
+                                      vue-mode
+                                      doom-themes
                                       (el-indent :location (recipe
                                                             :fetcher github
                                                             :repo "medikoo/el-indent"))
@@ -361,6 +364,9 @@ before packages are loaded. If you are unsure, you should try in setting them in
   (c-set-offset 'arglist-close 0)
   (c-set-offset 'substatement-open 0))
 
+(defun gabu-js2-mode-hook ()
+  (setq js2-strict-missing-semi-warning nil))
+
 (defun dotspacemacs/user-config ()
   "Configuration function for user code.
 This function is called at the very end of Spacemacs initialization after
@@ -370,11 +376,16 @@ explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
 
   ;; Requires
-  (require 'helm-bookmark)                 ;; Fix exception on reload
-  (require 'all-the-icons)
+  ;; (use-package helm-bookmark ;; Fix exception on reload
+  ;;   :defer t
+  ;;   )
+  (use-package all-the-icons
+    :defer t
+    )
 
   ;; Mode hooks
   (add-hook 'c++-mode-hook 'gabu-c++-mode-hook)
+  (add-hook 'js2-mode-hook 'gabu-js2-mode-hook)
 
   ;; Basic settings
   (setq-default indent-tabs-mode nil       ;; Tabs become spaces
