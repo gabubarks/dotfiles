@@ -85,6 +85,7 @@ values."
    dotspacemacs-additional-packages '(all-the-icons
                                       yasnippet-snippets
                                       vue-mode
+                                      stylus-mode
                                       doom-themes
                                       (el-indent :location (recipe
                                                             :fetcher github
@@ -335,6 +336,13 @@ values."
    ;; (default nil)
    dotspacemacs-whitespace-cleanup nil
    ))
+
+(defun sort-lines-nocase ()
+  (interactive)
+  (let ((sort-fold-case t))
+    (call-interactively 'sort-lines)
+    )
+  )
 
 (defun my-setup-indent (n)
   ;; java/c/c++
