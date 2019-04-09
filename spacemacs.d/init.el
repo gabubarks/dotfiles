@@ -52,6 +52,7 @@ values."
      (version-control :variables
                       version-control-diff-tool 'diff-hl
                       version-control-diff-side 'left)
+     colors
 
      ;; === LANGUAGES ===
      python
