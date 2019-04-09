@@ -11,6 +11,29 @@
 
 set $mod Mod1
 
+# Colors
+set_from_resource $darkred     color1  #000000
+set_from_resource $red         color9  #000000
+set_from_resource $darkgreen   color2  #000000
+set_from_resource $green       color10 #000000
+set_from_resource $darkyellow  color3  #000000
+set_from_resource $yellow      color11 #000000
+set_from_resource $darkblue    color4  #000000
+set_from_resource $blue        color12 #000000
+set_from_resource $darkmagenta color5  #000000
+set_from_resource $magenta     color13 #000000
+set_from_resource $darkcyan    color6  #000000
+set_from_resource $cyan        color14 #000000
+set_from_resource $darkwhite   color7  #000000
+set_from_resource $white       color15 #000000
+
+set_from_resource $cursorcolor cursorcolor #000000
+
+# Use custom colors for black
+set $black       #292b2e
+set $darkblack   #212026
+set $transparent #00000000
+
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 # font pango:monospace 8
@@ -27,9 +50,9 @@ font pango:DejaVu Sans Mono 8
 # font, it doesn’t scale on retina/hidpi displays.
 
 # workspaces
-set $ws1  "1: www"
-set $ws2  "2: term"
-set $ws3  "3: code"
+set $ws1  "1:www"
+set $ws2  "2:term"
+set $ws3  "3:code"
 set $ws4  "4"
 set $ws5  "5"
 set $ws6  "6"
@@ -37,6 +60,13 @@ set $ws7  "7"
 set $ws8  "8"
 set $ws9  "9"
 set $ws10 "10"
+
+#                       BORDER      BACKGROUND  TEXT        INDICATOR   CHILD_BORDER
+client.focused          $black      $black      $darkwhite  $darkblack  $darkblack
+client.unfocused        $black      $black      $white      $darkblack  $darkblack
+client.focused_inactive $black      $black      $white      $darkblack  $darkblack
+client.urgent           $darkred    $darkred    $black      $darkred    $darkred
+client.background $black
 
 # workspace_auto_back_and_forth yes
 
@@ -171,7 +201,22 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
         status_command i3status
+        position top
+        strip_workspace_numbers yes
+        colors {
+                statusline         $blue
+                background         $black
+                separator          $darkmagenta
+
+                #                  BORDER       BACKGROUND   TEXT
+                focused_workspace  $cursorcolor $cursorcolor $black
+                inactive_workspace $black       $black       $magenta
+                active_workspace   $black       $black       $magenta
+                urgent_workspace   $darkred     $darkred     $black
+                binding_mode       $darkred     $darkred     $black
+        }
 }
 
 # Start GNOME so GTK apps like nice
 exec --no-startup-id /usr/lib/gnome-settings-daemon/gsd-xsettings
+exec --no-startup-id compton --config ~/.config/compton.conf -b

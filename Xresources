@@ -1,0 +1,28 @@
+! === Spacemacs dark color scheme ===
+*.background: #292b2e
+*.foreground: #b2b2b2
+*.cursorcolor: #eead0e
+! Black + DarkGrey
+*.color0: #212026
+*.color8: #5d4d7a
+! DarkRed + Red
+*.color1: #9a0c08
+*.color9: #f2241f
+! DarkGreen + Green
+*.color2: #3d6a11
+*.color10: #67b11d
+! DarkYellow + Yellow
+*.color3: #6a5911
+*.color11: #b1951d
+! DarkBlue + Blue
+*.color4: #205b8f
+*.color12: #4f97d7
+! DarkMagenta + Magenta
+*.color5: #7b3483
+*.color13: #bc6ec5
+! DarkCyan + Cyan
+*.color6: #1b5945
+*.color14: #2d9574
+! LightGrey + White
+*.color7: #686868
+*.color15: #b2b2b2
