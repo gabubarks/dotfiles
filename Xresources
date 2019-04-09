@@ -6,8 +6,8 @@
 *.color0: #212026
 *.color8: #5d4d7a
 ! DarkRed + Red
-*.color1: #9a0c08
-*.color9: #f2241f
+*.color1: #862645
+*.color9: #ce537a
 ! DarkGreen + Green
 *.color2: #3d6a11
 *.color10: #67b11d

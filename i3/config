@@ -12,6 +12,8 @@
 set $mod Mod1
 
 # Colors
+set_from_resource $black       color0  #000000
+set_from_resource $darkgrey    color8  #000000
 set_from_resource $darkred     color1  #000000
 set_from_resource $red         color9  #000000
 set_from_resource $darkgreen   color2  #000000
@@ -27,11 +29,10 @@ set_from_resource $cyan        color14 #000000
 set_from_resource $darkwhite   color7  #000000
 set_from_resource $white       color15 #000000
 
+set_from_resource $background  background  #000000
+set_from_resource $foreground  foreground  #000000
 set_from_resource $cursorcolor cursorcolor #000000
 
-# Use custom colors for black
-set $black       #292b2e
-set $darkblack   #212026
 set $transparent #00000000
 
 # Font for window titles. Will also be used by the bar unless a different font
@@ -40,7 +41,7 @@ set $transparent #00000000
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-font pango:DejaVu Sans Mono 8
+font pango:DejaVu Sans Mono 9
 
 # Before i3 v4.8, we used to recommend this one as the default:
 # font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
@@ -62,10 +63,10 @@ set $ws9  "9"
 set $ws10 "10"
 
 #                       BORDER      BACKGROUND  TEXT        INDICATOR   CHILD_BORDER
-client.focused          $black      $black      $darkwhite  $darkblack  $darkblack
-client.unfocused        $black      $black      $white      $darkblack  $darkblack
-client.focused_inactive $black      $black      $white      $darkblack  $darkblack
-client.urgent           $darkred    $darkred    $black      $darkred    $darkred
+client.focused          $darkgrey   $darkgrey   $white      $black      $black
+client.unfocused        $background $background $white      $black      $black
+client.focused_inactive $background $background $white      $black      $black
+client.urgent           $darkred    $darkred    $background $darkred    $darkred
 client.background $black
 
 # workspace_auto_back_and_forth yes
@@ -205,15 +206,15 @@ bar {
         strip_workspace_numbers yes
         colors {
                 statusline         $blue
-                background         $black
+                background         $background
                 separator          $darkmagenta
 
                 #                  BORDER       BACKGROUND   TEXT
-                focused_workspace  $cursorcolor $cursorcolor $black
-                inactive_workspace $black       $black       $magenta
-                active_workspace   $black       $black       $magenta
-                urgent_workspace   $darkred     $darkred     $black
-                binding_mode       $darkred     $darkred     $black
+                focused_workspace  $cursorcolor $cursorcolor $background
+                inactive_workspace $background  $background  $magenta
+                active_workspace   $background  $background  $magenta
+                urgent_workspace   $darkred     $darkred     $background
+                binding_mode       $darkred     $darkred     $background
         }
 }
 
