@@ -1,3 +1,23 @@
+! === rofi ===
+rofi.modi: drun,run,window
+rofi.font: DejaVu Sans Mono 9
+rofi.width: 100
+rofi.lines: 10
+rofi.columns: 1
+rofi.opacity: 100
+!                       bg       fg     altbg    hlbg     hlfg
+rofi.color-normal: #212026, #b2b2b2, #212026, #eead0e, #212026
+rofi.color-urgent: #212026, #b2b2b2, #212026, #eead0e, #212026
+rofi.color-active: #212026, #b2b2b2, #212026, #eead0e, #212026
+rofi.color-window: #212026, #212026
+rofi.show-icons: true
+rofi.separator-style: solid
+rofi.bw: 0
+rofi.location: 2
+rofi.padding: 5
+rofi.sort: true
+rofi.matching: fuzzy
+
 ! === Spacemacs dark color scheme ===
 *.background: #292b2e
 *.foreground: #b2b2b2
