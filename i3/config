@@ -66,7 +66,7 @@ set $ws10 "10"
 client.focused          $darkgrey   $darkgrey   $white      $black      $black
 client.unfocused        $background $background $white      $black      $black
 client.focused_inactive $background $background $white      $black      $black
-client.urgent           $darkred    $darkred    $background $darkred    $darkred
+client.urgent           $red        $red        $background $red        $red
 client.background $black
 
 # workspace_auto_back_and_forth yes
@@ -215,8 +215,8 @@ bar {
                 focused_workspace  $cursorcolor $cursorcolor $background
                 inactive_workspace $background  $background  $magenta
                 active_workspace   $background  $background  $magenta
-                urgent_workspace   $darkred     $darkred     $background
-                binding_mode       $darkred     $darkred     $background
+                urgent_workspace   $red         $red         $background
+                binding_mode       $red         $red         $background
         }
 }
 
