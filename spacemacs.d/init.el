@@ -396,6 +396,9 @@ you should place your code here."
   (add-hook 'c++-mode-hook 'gabu-c++-mode-hook)
   (add-hook 'js2-mode-hook 'gabu-js2-mode-hook)
 
+  ;; Recognize aadditional filetypes
+  (add-to-list 'auto-mode-alist '("\\.ipp\\'" . c++-mode))
+
   ;; Basic settings
   (setq-default indent-tabs-mode nil       ;; Tabs become spaces
                 tab-width 4)               ;; Tabs are 4 spaces wide
