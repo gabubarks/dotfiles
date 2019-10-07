@@ -87,6 +87,7 @@ values."
                                       yasnippet-snippets
                                       vue-mode
                                       stylus-mode
+                                      graphql-mode
                                       doom-themes
                                       (el-indent :location (recipe
                                                             :fetcher github
@@ -265,7 +266,7 @@ values."
    dotspacemacs-loading-progress-bar t
    ;; If non nil the frame is fullscreen when Emacs starts up. (default nil)
    ;; (Emacs 24.4+ only)
-   dotspacemacs-fullscreen-at-startup t
+   dotspacemacs-fullscreen-at-startup nil
    ;; If non nil `spacemacs/toggle-fullscreen' will not use native fullscreen.
    ;; Use to disable fullscreen animations in OSX. (default nil)
    dotspacemacs-fullscreen-use-non-native nil
@@ -398,6 +399,7 @@ you should place your code here."
 
   ;; Recognize aadditional filetypes
   (add-to-list 'auto-mode-alist '("\\.ipp\\'" . c++-mode))
+  (add-to-list 'auto-mode-alist '("\\.gql\\'" . graphql-mode))
 
   ;; Basic settings
   (setq-default indent-tabs-mode nil       ;; Tabs become spaces
