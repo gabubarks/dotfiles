@@ -73,7 +73,7 @@ interval=30
 # The address can be forced to IPv4 or IPv6 with -4 or -6 switches.
 [iface]
 #instance=wlan0
-color=#00FF00
+color=#67b11d
 interval=10
 separator=false
 
@@ -112,6 +112,7 @@ interval=30
 #
 [time]
 command=date '+%Y-%m-%d %H:%M:%S'
+color=#b2b2b2
 interval=5
 
 # Generic media player support
