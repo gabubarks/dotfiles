@@ -1,0 +1,98 @@
+#!/usr/bin/env python3
+
+import sys
+import subprocess
+import json
+
+# case $BLOCK_BUTTON in
+#     3) amixer -q -D pulse set Master Playback Switch toggle ;;  # Toggle mute
+#     4) amixer -q -D pulse set Master 5%+ unmute ;; # Increase volume
+#     5) amixer -q -D pulse set Master 5%- unmute ;; # Decrease volume
+# esac
+
+# # Print current volume
+# if [ -f amixer -D pulse get Master | grep -o "\[on\]" | head -n1 ]
+#     amixer -D pulse get Master | grep -o "\[.*%\]" | grep -o "[0-9]*" | head -n1
+# fi
+
+def is_muted():
+    return not subprocess.check_output(
+        'amixer -D pulse get Master | grep -o "\[on\]" | head -n1',
+        shell=True,
+        universal_newlines=True,
+    )
+
+def get_volume():
+    return int(subprocess.check_output(
+        'amixer -D pulse get Master | grep -o "\[.*%\]" | grep -o "[0-9]*" | head -n1',
+        shell=True,
+        universal_newlines=True,
+    ).split()[0])
+
+def toggle_muted():
+    subprocess.check_output(
+        'amixer -q -D pulse set Master Playback Switch toggle',
+        shell=True,
+    )
+
+def increase_volume():
+    subprocess.check_output(
+        'amixer -q -D pulse set Master 5%+ unmute',
+        shell=True,
+    )
+
+def decrease_volume():
+    subprocess.check_output(
+        'amixer -q -D pulse set Master 5%- unmute',
+        shell=True,
+    )
+
+def emit_signal():
+    executor.run('pkill -RTMIN+10 i3blocks')
+
+def get_command():
+    if len(sys.argv) > 1:
+        return sys.argv[1]
+    return None
+
+def main():
+    # Execute command if given
+    try:
+        command = get_command()
+        if command is not None:
+            if command == '3':
+                # Toggle mute
+                toggle_muted()
+            elif command == '4':
+                # Increase volume
+                increase_volume()
+            elif command == '5':
+                # Decrease volume
+                decrease_volume()
+    except Exception as e:
+        pass
+
+    # Write current volume level
+    try:
+        if not is_muted():
+            sys.stdout.write(
+                json.dumps({
+                    "full_text": "{:3}%".format(get_volume()),
+                })
+            )
+            sys.stdout.flush()
+        else:
+            sys.stdout.write(
+                json.dumps({
+                    "full_text": "MUTE",
+                    "color": "#686868",
+                })
+            )
+            sys.stdout.flush()
+    except Exception as e:
+        sys.stdout.write(f"ERROR: {e}")
+        sys.stdout.flush()
+    return 0
+
+if __name__ == '__main__':
+    main()

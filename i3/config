@@ -200,24 +200,28 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+# WINDOW DEFAULTS
+for_window [class="(?i)pavucontrol"] floating enable, move position mouse
+for_window [class="(?i)pavucontrol" instance="pavucontrol-bar"] move down 34 px
+
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        status_command i3blocks
-        position top
-        strip_workspace_numbers yes
-        colors {
-                statusline         $blue
-                background         $background
-                separator          $darkmagenta
+    status_command i3blocks
+    position top
+    strip_workspace_numbers yes
+    colors {
+        statusline         $blue
+        background         $background
+        separator          $darkmagenta
 
-                #                  BORDER       BACKGROUND   TEXT
-                focused_workspace  $cursorcolor $cursorcolor $background
-                inactive_workspace $background  $background  $magenta
-                active_workspace   $background  $background  $magenta
-                urgent_workspace   $red         $red         $background
-                binding_mode       $red         $red         $background
-        }
+        #                  BORDER       BACKGROUND   TEXT
+        focused_workspace  $cursorcolor $cursorcolor $background
+        inactive_workspace $background  $background  $magenta
+        active_workspace   $background  $background  $magenta
+        urgent_workspace   $red         $red         $background
+        binding_mode       $red         $red         $background
+    }
 }
 
 
