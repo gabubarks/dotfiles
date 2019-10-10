@@ -72,21 +72,62 @@ def main():
     except Exception as e:
         pass
 
+    def render_bar(value, min_value, max_value, bar_length=10):
+        full_block_char = u"\u2588"
+        part_block_chars = [
+            (7.0 / 8.0, u"\u2589"),
+            (6.0 / 8.0, u"\u258A"),
+            (5.0 / 8.0, u"\u258B"),
+            (4.0 / 8.0, u"\u258C"),
+            (3.0 / 8.0, u"\u258D"),
+            (2.0 / 8.0, u"\u258E"),
+            (1.0 / 8.0, u"\u258F"),
+            (0, ""),
+        ]
+        fill_char = u"\u2015"
+
+        clamped = min(max(value, min_value), max_value)
+        scaled = clamped / float(max_value) * bar_length
+
+        full_blocks = int(scaled)
+        part_blocks = scaled - int(scaled)
+
+        bar = (
+            # Number of full blocks
+            full_block_char*int(full_blocks) +
+
+            # First possible partial block
+            next((x for x in part_block_chars if part_blocks >= x[0]))[1]
+        ).ljust(
+            # Fill rest of length with filler characters
+            bar_length, fill_char
+        )
+        return bar
+
+
     # Write current volume level
     try:
+        vol = get_volume()
+        bar = render_bar(vol, 0, 100, 5)
+
         if not is_muted():
             sys.stdout.write(
                 json.dumps({
-                    "full_text": "{:3}%".format(get_volume()),
-                })
+                    "full_text": "{bar} {vol:3}%".format(
+                        bar=bar,
+                        vol=get_volume()
+                    ),
+                })+"\n"
             )
             sys.stdout.flush()
         else:
             sys.stdout.write(
                 json.dumps({
-                    "full_text": "MUTE",
+                    "full_text": "{bar} MUTE".format(
+                        bar=bar,
+                    ),
                     "color": "#686868",
-                })
+                })+"\n"
             )
             sys.stdout.flush()
     except Exception as e:
