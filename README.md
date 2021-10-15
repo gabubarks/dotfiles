@@ -15,6 +15,10 @@ Copy TTF files to `~/.fonts`
 ### Spacemacs
 https://github.com/syl20bnr/spacemacs
 
+```bash
+ln -s <path_to_dotfiles>/spacemacs.d/ .spacemacs.d
+```
+
 ### PT
 Download https://github.com/monochromegane/the_platinum_searcher/releases
 
