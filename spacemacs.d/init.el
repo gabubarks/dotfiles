@@ -44,6 +44,7 @@ This function should only modify configuration layer settings."
                       version-control-diff-side 'left)
      multiple-cursors
      treemacs
+     colors
 
      ;; === LANGUAGES ===
      python
