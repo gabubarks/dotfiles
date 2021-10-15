@@ -54,6 +54,7 @@ This function should only modify configuration layer settings."
      csharp
      html
      javascript
+     typescript
      windows-scripts
      yaml
      csv
