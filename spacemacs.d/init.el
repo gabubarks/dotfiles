@@ -53,8 +53,13 @@ This function should only modify configuration layer settings."
             c-c++-enable-clang-support t)
      csharp
      html
-     javascript
-     typescript
+     tide
+     (javascript :variables
+                 javascript-backend 'tide
+                 )
+     (typescript :variables
+                 typescript-backend 'tide
+                 )
      windows-scripts
      yaml
      csv
@@ -393,7 +398,7 @@ It should only modify the values of Spacemacs settings."
 
    ;; Show the scroll bar while scrolling. The auto hide time can be configured
    ;; by setting this variable to a number. (default t)
-   dotspacemacs-scroll-bar-while-scrolling t
+   dotspacemacs-scroll-bar-while-scrolling nil
 
    ;; Control line numbers activation.
    ;; If set to `t', `relative' or `visual' then line numbers are enabled in all
