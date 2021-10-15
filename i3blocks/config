@@ -29,7 +29,7 @@ interval=10
 command=$HOME/.config/i3blocks/scripts/cpu_usage
 label=CPU 
 interval=10
-min_width=CPU: 100.00%
+min_width=CPU 100.00%
 
 # Volume indicator
 #
@@ -39,13 +39,12 @@ min_width=CPU: 100.00%
 [volume]
 command=$HOME/.config/i3blocks/scripts/volume $BLOCK_BUTTON
 format=json
-label=♪ 
 interval=once
 signal=10
 
 # Date Time
 #
 [time]
-command=date '+%Y-%m-%d %H:%M:%S'
+command=printf " %s \n" "`date '+%Y-%m-%d %H:%M:%S'`"
 color=#b2b2b2
 interval=5

@@ -41,7 +41,7 @@ set $transparent #00000000
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-font pango:DejaVu Sans Mono 9
+font pango:DejaVuSansMono Nerd Font 9
 
 # Before i3 v4.8, we used to recommend this one as the default:
 # font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
@@ -51,9 +51,9 @@ font pango:DejaVu Sans Mono 9
 # font, it doesn’t scale on retina/hidpi displays.
 
 # workspaces
-set $ws1  "1:www"
-set $ws2  "2:term"
-set $ws3  "3:code"
+set $ws1  "1: Web"
+set $ws2  "2: Term"
+set $ws3  "3: Code"
 set $ws4  "4"
 set $ws5  "5"
 set $ws6  "6"
@@ -88,6 +88,12 @@ bindsym $mod+Shift+q kill
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 bindsym $mod+d exec --no-startup-id rofi -show drun
+
+# don't warp the mouse to the center of the window when changing output
+mouse_warping none
+
+# hide container borders when only one window
+hide_edge_borders smart
 
 # change focus
 bindsym $mod+h focus left
@@ -205,7 +211,7 @@ mode "$mode_resize" {
 set $mode_power power
 bindsym $mod+Control+l mode "$mode_power"
 mode "$mode_power" {
-    bindsym l mode "default", exec --no-startup-id i3lock
+    bindsym l mode "default", exec --no-startup-id i3lock -c 292b2e
 
     bindsym Return mode "default"
     bindsym Escape mode "default"
@@ -215,6 +221,8 @@ mode "$mode_power" {
 # WINDOW DEFAULTS
 for_window [class="(?i)pavucontrol"] floating enable, move position mouse
 for_window [class="(?i)pavucontrol" instance="pavucontrol-bar"] move down 34 px
+
+for_window [class="(?i)microsoft teams( - preview)?" title="(?i)microsoft teams notification"] floating enable, no_focus
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)

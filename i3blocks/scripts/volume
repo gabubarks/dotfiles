@@ -85,6 +85,7 @@ def main():
             (0, ""),
         ]
         fill_char = u"\u2015"
+        # fill_char = " "
 
         clamped = min(max(value, min_value), max_value)
         scaled = clamped / float(max_value) * bar_length
@@ -113,7 +114,7 @@ def main():
         if not is_muted():
             sys.stdout.write(
                 json.dumps({
-                    "full_text": "{bar} {vol:3}%".format(
+                    "full_text": u"\ufa7d {bar} {vol:3}%".format(
                         bar=bar,
                         vol=get_volume()
                     ),
@@ -123,7 +124,7 @@ def main():
         else:
             sys.stdout.write(
                 json.dumps({
-                    "full_text": "{bar} MUTE".format(
+                    "full_text": u"\ufa80 {bar} MUTE".format(
                         bar=bar,
                     ),
                     "color": "#686868",
