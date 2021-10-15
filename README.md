@@ -6,7 +6,8 @@ sudo apt install keepassxc
 ```
 
 ### Fonts
-Download https://github.com/adobe-fonts/source-code-pro
+* https://github.com/adobe-fonts/source-code-pro
+* https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/DejaVuSansMono/Regular/complete
 
 Copy TTF files to `~/.fonts`
 
