@@ -34,3 +34,6 @@ cd ~/.config
 ln -s <dotfiles>/i3blocks i3blocks
 ln -s <dotfiles>/dunst dunst
 ```
+
+### Telegram
+Disable weird borders by toggling Settings -> Advanced -> System integration -> [ ] Use system window frame
