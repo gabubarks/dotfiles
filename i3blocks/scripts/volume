@@ -113,22 +113,28 @@ def main():
 
         if not is_muted():
             sys.stdout.write(
-                json.dumps({
-                    "full_text": u"\ufa7d {bar} {vol:3}%".format(
-                        bar=bar,
-                        vol=get_volume()
-                    ),
-                })+"\n"
+                json.dumps(
+                    {
+                        "full_text": u"\ufa7d {bar} {vol:3}%".format(
+                            bar=bar,
+                            vol=get_volume()
+                        ),
+                    },
+                    ensure_ascii=False,
+                )+"\n"
             )
             sys.stdout.flush()
         else:
             sys.stdout.write(
-                json.dumps({
-                    "full_text": u"\ufa80 {bar} MUTE".format(
-                        bar=bar,
-                    ),
-                    "color": "#686868",
-                })+"\n"
+                json.dumps(
+                    {
+                        "full_text": u"\ufa80 {bar} MUTE".format(
+                            bar=bar,
+                        ),
+                        "color": "#686868",
+                    },
+                    ensure_ascii=False,
+                )+"\n"
             )
             sys.stdout.flush()
     except Exception as e:
