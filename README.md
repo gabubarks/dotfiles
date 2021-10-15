@@ -27,7 +27,9 @@ Install to `/usr/local/bin/`
 ### i3
 ```bash
 sudo apt install i3 i3blocks
+cd ~
 ln -s <dotfiles>/i3 .i3
+ln -s <dotfiles>/Xresources .Xresources
 cd ~/.config
 ln -s <dotfiles>/i3blocks i3blocks
 ln -s <dotfiles>/dunst dunst
