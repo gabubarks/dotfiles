@@ -14,3 +14,7 @@ Copy TTF files to `~/.fonts`
 
 ### Spacemacs
 https://github.com/syl20bnr/spacemacs
+
+### PT
+Download https://github.com/monochromegane/the_platinum_searcher/releases
+Install to `/usr/local/bin/`
