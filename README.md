@@ -1,9 +1,7 @@
 # dotfiles
 
-### Packages
+### Generic packages
 ```bash
-sudo apt install i3 i3blocks
-sudo apt install emacs
 sudo apt install keepassxc
 ```
 
@@ -16,10 +14,20 @@ Copy TTF files to `~/.fonts`
 https://github.com/syl20bnr/spacemacs
 
 ```bash
-ln -s <path_to_dotfiles>/spacemacs.d/ .spacemacs.d
+sudo apt install emacs
+ln -s <dotfiles>/spacemacs.d/ .spacemacs.d
 ```
 
 ### PT
 Download https://github.com/monochromegane/the_platinum_searcher/releases
 
 Install to `/usr/local/bin/`
+
+### i3
+```bash
+sudo apt install i3 i3blocks
+ln -s <dotfiles>/i3 .i3
+cd ~/.config
+ln -s <dotfiles>/i3blocks i3blocks
+ln -s <dotfiles>/dunst dunst
+```
