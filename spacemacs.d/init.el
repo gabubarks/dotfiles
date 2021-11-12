@@ -62,11 +62,16 @@ This function should only modify configuration layer settings."
                  )
      windows-scripts
      yaml
+     json
      csv
      markdown
      nginx
      docker
      rust
+     vue
+     graphql
+
+     themes-megapack
      )
 
    ;; List of additional packages that will be installed without being wrapped
@@ -78,17 +83,17 @@ This function should only modify configuration layer settings."
    ;; `:location' property: '(your-package :location "~/path/to/your-package/")
    ;; Also include the dependencies as they will not be resolved automatically.
    dotspacemacs-additional-packages '(
-                                      yasnippet-snippets
-                                      vue-mode
                                       stylus-mode
-                                      graphql-mode
                                       )
 
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
 
    ;; A list of packages that will not be installed and loaded.
-   dotspacemacs-excluded-packages '()
+   dotspacemacs-excluded-packages '(
+                                    modus-operandi-theme
+                                    modus-vivendi-theme
+                                    )
 
    ;; Defines the behaviour of Spacemacs when installing packages.
    ;; Possible values are `used-only', `used-but-keep-unused' and `all'.
