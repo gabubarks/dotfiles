@@ -37,6 +37,7 @@ This function should only modify configuration layer settings."
      helm
      (auto-completion :variables
                       auto-completion-enable-snippets-in-popup t)
+     (syntax-checking :variables syntax-checking-enable-by-default nil)
      emacs-lisp
      git
      (version-control :variables
@@ -47,7 +48,8 @@ This function should only modify configuration layer settings."
      colors
 
      ;; === LANGUAGES ===
-     python
+     lsp
+     (python :variables python-backend 'anaconda)
      (c-c++ :variables
             c-c++-default-mode-for-headers 'c++-mode
             c-c++-enable-clang-support t)
@@ -70,8 +72,6 @@ This function should only modify configuration layer settings."
      rust
      vue
      graphql
-
-     themes-megapack
      )
 
    ;; List of additional packages that will be installed without being wrapped
@@ -93,6 +93,7 @@ This function should only modify configuration layer settings."
    dotspacemacs-excluded-packages '(
                                     modus-operandi-theme
                                     modus-vivendi-theme
+                                    helm-comint
                                     )
 
    ;; Defines the behaviour of Spacemacs when installing packages.
@@ -599,6 +600,11 @@ dump.")
   )
 
 
+(defun gabu-toml-mode-hook ()
+  (display-line-numbers-mode t)
+  )
+
+
 (defun dotspacemacs/user-config ()
   "Configuration for user code:
 This function is called at the very end of Spacemacs startup, after layer
@@ -608,6 +614,7 @@ before packages are loaded."
   ;; Mode hooks
   (add-hook 'c++-mode-hook 'gabu-c++-mode-hook)
   (add-hook 'js2-mode-hook 'gabu-js2-mode-hook)
+  (add-hook 'toml-mode-hook 'gabu-toml-mode-hook)
 
   ;; Recognize aadditional filetypes
   (add-to-list 'auto-mode-alist '("\\.ipp\\'" . c++-mode))
@@ -621,6 +628,8 @@ before packages are loaded."
   (global-company-mode t)                  ;; Use company everywhere
   (setq company-idle-delay 0.1)            ;; Fast company
   (setq company-minimum-prefix-length 1)   ;; Even a single character; so that snippets show up
+
+  (treemacs-fringe-indicator-mode 'always)
 
   ;; Other settings
   (setq create-lockfiles nil               ;; Don't pollute directories with lockfiles
