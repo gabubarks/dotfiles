@@ -10,18 +10,14 @@ return {
       opts = function(_, opts)
         local Snacks = require("snacks")
         local maps = opts.mappings
-        maps.n["<Leader>bd"] = {
-          function() Snacks.bufdelete() end,
-          desc = "Close buffer",
-        }
-        maps.n["<Leader>bD"] = {
-          function()
-            require("astroui.status.heirline").buffer_picker(
-              function(bufnr) require("astrocore.buffer").close(bufnr) end
-            )
-          end,
-          desc = "Close buffer from tabline",
-        }
+        if maps ~= nil then
+          -- Use snacks for buffer delete. Remap old binding to bD
+          maps.n["<Leader>bD"] = maps.n["<Leader>bd"]
+          maps.n["<Leader>bd"] = {
+            function() Snacks.bufdelete() end,
+            desc = "Close buffer",
+          }
+        end
       end,
     }
   }
