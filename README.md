@@ -14,11 +14,18 @@ unzip Monofur.zip -d ~/.fonts/Monofur/
 rm Monofur.zip
 ```
 
+### Bash
+```bash
+stow bash
+```
+
 ### Nvim
 ```bash
 cargo install bob
 bob install stable
 bob use stable
+echo 'PATH="$HOME/.local/share/bob/nvim-bin:$PATH"' >> ~/.bashrc
+
 stow nvim
 ```
 
