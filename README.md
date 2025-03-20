@@ -19,6 +19,14 @@ rm Monofur.zip
 stow bash
 ```
 
+### Tmux
+```bash
+sudo apt install tmux
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
+stow tmux
+```
+
 ### Nvim
 ```bash
 cargo install bob
