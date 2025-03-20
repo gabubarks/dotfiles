@@ -6,34 +6,26 @@ sudo apt install keepassxc
 ```
 
 ### Fonts
-* https://github.com/adobe-fonts/source-code-pro
-* https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/DejaVuSansMono/Regular/complete
+```bash
+cd ~/Downloads
+wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.3.0/Monofur.zip
+mkdir -p ~/.fonts/Monofur/
+unzip Monofur.zip -d ~/.fonts/Monofur/
+rm Monofur.zip
+```
 
-Copy TTF files to `~/.fonts`
+### Nvim
+```bash
+cargo install bob
+bob install stable
+bob use stable
+stow nvim
+```
 
 ### Spacemacs
 https://github.com/syl20bnr/spacemacs
 
 ```bash
 sudo apt install emacs
-ln -s <dotfiles>/spacemacs.d/ .spacemacs.d
-```
-
-### PT
-Download https://github.com/monochromegane/the_platinum_searcher/releases
-
-Install to `/usr/local/bin/`
-
-### i3
-```bash
-sudo apt install i3 i3blocks
-cd ~
-ln -s <dotfiles>/i3 .i3
-ln -s <dotfiles>/Xresources .Xresources
-cd ~/.config
-ln -s <dotfiles>/i3blocks i3blocks
-ln -s <dotfiles>/dunst dunst
-```
-
-### Telegram
-Disable weird borders by toggling Settings -> Advanced -> System integration -> [ ] Use system window frame
+stow spacemacs
+```kkk
