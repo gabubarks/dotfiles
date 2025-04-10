@@ -11,6 +11,7 @@ cd ~/Downloads
 wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.3.0/Monofur.zip
 mkdir -p ~/.fonts/Monofur/
 unzip Monofur.zip -d ~/.fonts/Monofur/
+fc-cache -fv
 rm Monofur.zip
 ```
 
