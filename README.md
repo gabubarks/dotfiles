@@ -30,11 +30,16 @@ stow tmux
 
 ### Nvim
 ```bash
+# Install nvim
 cargo install bob
 bob install stable
 bob use stable
 echo 'PATH="$HOME/.local/share/bob/nvim-bin:$PATH"' >> ~/.bashrc
 
+# Install AstroNvim extra dependencies
+sudo apt install ripgrep btm gdu
+
+# Set up configs
 stow nvim
 ```
 
