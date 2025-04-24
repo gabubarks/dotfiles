@@ -9,5 +9,6 @@ return {
   { import = "astrocommunity.motion.mini-surround" },
   { import = "astrocommunity.colorscheme.catppuccin" },
   { import = "astrocommunity.editing-support.suda-vim" },
+  { import = "astrocommunity.pack.vue" },
   -- import/override with your plugins folder
 }
